@@ -7,10 +7,10 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Home">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('Home'); ?>">
                 <div class="sidebar-brand-icon">
                 <img class="img-profile"
-                 src="assets/img/logo-malang.png">
+                 src="<?= base_url(''); ?>assets/img/logo-malang.png">
                 </div>
                 <span class="sidebar-brand-text mx-3">Siskeudes 2021</span>
             </a>
@@ -20,7 +20,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="Home">
+                <a class="nav-link" href="<?= base_url('Home'); ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Home</span></a>
             </li>
@@ -43,8 +43,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Akses:</h6>
-                        <a class="collapse-item" href="PerangkatDesa">Perangkat Desa</a>
-                        <a class="collapse-item" href="cards.html">Siskeudes 2020</a>
+                        <a class="collapse-item" href="<?= base_url('PerangkatDesa'); ?>">Perangkat Desa</a>
+                        <a class="collapse-item" href="<?= base_url('DDADD_history'); ?>">DDADD</a>
                     </div>
                 </div>
             </li>
@@ -297,7 +297,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Tim PKL Polije 2021 MIF</span>
                                 <img class="img-profile rounded-circle"
-                                    src="assets/img/failure.png">
+                                    src="<?= base_url(''); ?>assets/img/failure.png">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

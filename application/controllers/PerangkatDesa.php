@@ -1,35 +1,79 @@
-<?php if (! defined('BASEPATH')) exit ('No direct script access allowed'); 
+<?php defined('BASEPATH') or exit ('No direct script access allowed'); 
 
 class PerangkatDesa extends CI_Controller{
     public function __construct(){
         parent:: __construct();
         $this->load->model('Kecamatan_model','mselect');
-        $this->load->model('Desa_model','mselect2');
+        //  $this->load->model('Desa_model','mselect2');
 
     }
 
-        public function index(){
-            $getdata = $this->mselect->getdatakec();
-            $data['datakab'] = $getdata;
-            $this->load->view('template/header');
-            $this->load->view('template/sidebar');
-            $this->load->view('template/footer');
-            $this->load->view('perangkatdesa/desa',($data));
-        }
+    public function index(){
+        $this->load->model('Kecamatan_model','mselect');
+        // $data ['Nama_Kec1'] = $this->mselect->getNamakec();
+        $getdata = $this->mselect->getdatakec();
+        $data['datakec'] = $getdata;
+        $this->load->view('template/header');
+        $this->load->view('template/sidebar');
+        $this->load->view('template/footer');
+        $this->load->view('perangkatdesa/desa',($data));
+    }
 
-        public function get_desa(){
-            $id = $this->input->post('id');
-            $data = $this->mselect->get_desa($id);
-            echo json_encode($data);  
+        public function getDesa(){
+            $idkecamatan = $this->input->post('id');
+            $data = $this->mselect->getDataDesa($idkecamatan);
+            $output = '<option value">Pilih Desa</ouput>';
+            foreach ($data as $row) {
+                $output .= '<option value="'.$row->Nama_Desa.'">'.$row->Nama_Desa.'</option>';
+            }
+            $this->output->set_content_type('application/json')->set_output(json_encode($output));
         }
-        // search
-        // public function search()
-        // {
-        //     $data = $this->input->post('keyword');
-        //     $data ['desa'] = $this->Kecamatan_model->get_keyword($keyword);
-        //     $this->load->view('template/header');
-        //     $this->load->view('template/sidebar');
-        //     $this->load->view('template/footer');
-        // }
+        public function Tambah(){
+            if ($this->input->server('REQUEST_METHOD') === 'POST') {
+                $data = $this->input->post();
+                $this->db->insert('ddadd',$data);
+                redirect('DDADD_history');
+         
+                } else {
 
+            }
+        $data['gambar_dekat']='';
+        $gambar = $_FILES['gambar_dekat']['name'];
+
+        $config['upload_path'] = './uploads';
+        $config['allowed_types'] = 'jpg|jpeg|png|PNG';
+
+        $this->load->library('upload',$config);
+
+        if(!$this->upload->do_upload('gambar_dekat')){
+            echo 'gambar gagal di upload';
+        }else{
+            $gambar = $this->upload->data('file_name');
+            $data['gambar_dekat'] = $gambar;
+        }
+        $this->db->insert('ddadd',$data);
+          redirect('PerangkatDesa');
+
+
+          //gambar jauh
+        $data2['gambar_jauh']='';
+        $gambar2 = $_FILES['gambar_jauh']['name'];
+
+        $config['upload_path'] = './uploads';
+        $config['allowed_types'] = 'jpg|jpeg|png|PNG';
+
+        $this->load->library('upload',$config);
+
+        if(!$this->upload->do_upload('gambar_jauh')){
+            echo 'gambar gagal di upload';
+        }else{
+            $gambar2 = $this->upload->data('file_name');
+            $data['gambar_jauh'] = $gambar2;
+        }
+        $this->db->insert('ddadd',$data2);
+          redirect('PerangkatDesa');
+        
+    }
+       
 }
+ 
