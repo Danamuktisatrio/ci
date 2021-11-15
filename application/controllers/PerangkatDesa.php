@@ -15,6 +15,7 @@ class PerangkatDesa extends CI_Controller{
         $data['datakec'] = $getdata;
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
+        $this->load->view('template/topbar');
         $this->load->view('template/footer');
         $this->load->view('perangkatdesa/desa',($data));
     }
@@ -40,7 +41,7 @@ class PerangkatDesa extends CI_Controller{
         $data['gambar_dekat']='';
         $gambar = $_FILES['gambar_dekat']['name'];
 
-        $config['upload_path'] = './uploads';
+        $config['upload_path'] = './uploads/';
         $config['allowed_types'] = 'jpg|jpeg|png';
 
         $this->load->library('upload',$config);

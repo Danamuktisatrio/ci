@@ -8,6 +8,7 @@ class DDADD_history extends CI_Controller{
         $data['ddadd'] = $this->Kecamatan_model->tampil_data()->result();
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
+        $this->load->view('template/topbar');
         $this->load->view('perangkatdesa/add_desa',$data);
         $this->load->view('template/footer');
         
@@ -23,6 +24,7 @@ class DDADD_history extends CI_Controller{
         $data['ddadd'] = $this->Kecamatan_model->edit_data($where, 'ddadd')->result();
         $this->load->view('template/header');
         $this->load->view('template/sidebar');
+        $this->load->view('template/topbar');
         $this->load->view('perangkatdesa/edit',$data);  
         $this->load->view('template/footer');
 
