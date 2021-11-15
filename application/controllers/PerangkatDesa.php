@@ -41,7 +41,7 @@ class PerangkatDesa extends CI_Controller{
         $gambar = $_FILES['gambar_dekat']['name'];
 
         $config['upload_path'] = './uploads';
-        $config['allowed_types'] = 'jpg|jpeg|png|PNG';
+        $config['allowed_types'] = 'jpg|jpeg|png';
 
         $this->load->library('upload',$config);
 
@@ -60,7 +60,7 @@ class PerangkatDesa extends CI_Controller{
         $gambar2 = $_FILES['gambar_jauh']['name'];
 
         $config['upload_path'] = './uploads';
-        $config['allowed_types'] = 'jpg|jpeg|png|PNG';
+        $config['allowed_types'] = 'jpg|jpeg|png';
 
         $this->load->library('upload',$config);
 

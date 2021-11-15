@@ -15,10 +15,10 @@
                                     <thead>
                                         <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">Desa</th>
-                                        <th scope="col">FotoDekat</th>
-                                        <th scope="col">FotoJauh</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col" style="text-align: center;">Desa</th>
+                                        <th scope="col" style="text-align: center;">FotoDekat</th>
+                                        <th scope="col" style="text-align: center;">FotoJauh</th>
+                                        <th scope="col" style="text-align: center;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -27,10 +27,18 @@
                                         foreach($ddadd as $wilayah) : ?>
                                         <tr>
                                         <th scope="row"><?= $i++; ?></th>
-                                        <td><?= $wilayah->Desa;?></td>
-                                        <td><?= $wilayah->gambar_dekat;?></td>
-                                        <td><?= $wilayah->gambar_jauh; ?></td>                                        
-                                        <td><?php echo anchor('DDADD_history/Hapus/'.$wilayah->id, 
+                                        <td style="text-align: center;"><?= $wilayah->Desa;?></td>
+                                        <td style="text-align: center;">
+                                            <!-- <?= $wilayah->gambar_dekat;?> -->
+                                            <img src="<?= base_url('uploads/'.$wilayah->gambar_dekat)?>" style ="width : 100px">
+
+                                        </td>
+                                        <td style="text-align: center;">
+                                           <!-- <?= $wilayah->gambar_jauh; ?> -->
+                                           <img src="<?= base_url('uploads/'.$wilayah->gambar_jauh)?>" style ="width : 100px">
+
+                                        </td>                                        
+                                        <td style="text-align: center;"><?php echo anchor('DDADD_history/Hapus/'.$wilayah->id, 
                                         '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?>
                                         <?php echo anchor('DDADD_history/Edit/'.$wilayah->id,
                                         '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?>
